@@ -1,149 +1,183 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next Home Egypt - سكن الطلاب</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="arabic">
-    <!-- Navigation -->
-    <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo" id="homeLink">
-                <div class="logo-icon">NH</div>
-                <div class="logo-text">Next<span>Home</span></div>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active" id="navHome">الرئيسية</a></li>
-                    <li><a href="properties.html" id="navProperties">الشقق</a></li>
-                    <li><a href="about.html" id="navAbout">عن المنصة</a></li>
-                    <li><a href="contact.html" id="navContact">اتصل بنا</a></li>
-                </ul>
-            </nav>
-            <div class="auth-buttons">
-                <button class="btn btn-outline" id="loginBtn">تسجيل الدخول</button>
-                <button class="btn btn-secondary" id="registerBtn">إنشاء حساب</button>
-                <button class="language-toggle" id="langToggle">عربي</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Home Page -->
-    <main class="page active-page" id="homePage">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container hero-content">
-                <h1>شقق مخصصة للطلاب المغتربين في جميع أنحاء مصر</h1>
-                <p>ابحث عن سكن آمن ومريح قريب من جامعتك أو مدرستك مع Next Home. حلول سكنية مصممة خصيصًا لاحتياجات الطلاب.</p>
-                <div class="hero-btns">
-                    <a href="properties.html" class="btn btn-secondary glow-button" id="heroPropertiesBtn">تصفح الشقق</a>
-                    <a href="register.html" class="btn btn-outline" id="heroRegisterBtn">أنشئ حسابك الآن</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>لماذا تختار Next Home؟</h2>
-                    <p>منصة موثوقة مصممة خصيصًا لاحتياجات الطلاب المغتربين في مصر</p>
-                </div>
-                <div class="features-grid">
-                    <div class="feature-card card-hover">
-                        <div class="feature-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h3>شقق مخصصة للطلاب</h3>
-                        <p>شقق مجهزة بالكامل مع مرافق مصممة خصيصًا لاحتياجات الطلاب</p>
-                    </div>
-                    <div class="feature-card card-hover">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>أمان و رقابة</h3>
-                        <p>نظام أمان متكامل مع مشرفين ورقابة على مدار الساعة</p>
-                    </div>
-                    <div class="feature-card card-hover">
-                        <div class="feature-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3>قريب من الجامعات</h3>
-                        <p>شقق قريبة من الجامعات والمدارس الكبرى في جميع المحافظات</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Properties Section -->
-        <section class="section properties">
-            <div class="container">
-                <div class="section-title">
-                    <h2>أحدث الشقق المتوفرة</h2>
-                    <p>شقق مجهزة بالكامل للطلاب المغتربين</p>
-                </div>
-                <div class="property-grid" id="propertiesGrid">
-                    <!-- Properties will be loaded via JavaScript -->
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Next Home</h3>
-                    <p>منصة رائدة لتوفير سكن آمن ومريح للطلاب المغتربين في جميع أنحاء مصر. نحن نربط الطلاب بالشقق المثالية القريبة من جامعاتهم ومدارسهم.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>روابط سريعة</h3>
-                    <ul>
-                        <li><a href="index.html" id="footerHome">الرئيسية</a></li>
-                        <li><a href="properties.html" id="footerProperties">الشقق</a></li>
-                        <li><a href="about.html" id="footerAbout">عن المنصة</a></li>
-                        <li><a href="contact.html" id="footerContact">اتصل بنا</a></li>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Next Home Egypt - سكن الطلاب</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="arabic light-mode">
+        <!-- Navigation -->
+        <header>
+            <div class="container header-container">
+                <a href="index.html" class="logo" id="homeLink">
+                    <img src="ChatGPT Image 1 أكتوبر 2025، 09_45_25 م.png"
+                        alt="Next Home Logo">
+                    <div class="logo-text">Next<span>Home</span></div>
+                </a>
+                <nav>
+                    <ul id="navList">
+                        <li><a href="index.html" class="active"
+                                id="navHome">الرئيسية</a></li>
+                        <li><a href="properties.html"
+                                id="navProperties">الشقق</a></li>
+                        <li><a href="about.html" id="navAbout">عن
+                                المنصة</a></li>
+                        <li><a href="contact.html" id="navContact">اتصل
+                                بنا</a></li>
+                        <!-- أيقونة البروفايل هتظهر هنا لما يكون مسجل دخول -->
                     </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <button class="language-toggle"
+                        id="langToggle">عربي</button>
+                    <div class="profile-icon" id="profileIcon"
+                        style="display: none;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <button class="btn btn-outline" id="authBtn">تسجيل
+                        الدخول</button>
                 </div>
-                <div class="footer-col">
-                    <h3>الجامعات</h3>
-                    <ul>
-                        <li><a href="#">جامعة القاهرة</a></li>
-                        <li><a href="#">جامعة عين شمس</a></li>
-                        <li><a href="#">جامعة الإسكندرية</a></li>
-                        <li><a href="#">جامعة المنصورة</a></li>
-                        <li><a href="#">جامعة أسيوط</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>اتصل بنا</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
-                        <li><i class="fas fa-phone"></i> 16588</li>
-                        <li><i class="fas fa-envelope"></i> info@nexthome.eg</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Next Home Egypt. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
+            </header>
 
-    <script src="js/main.js"></script>
-    <script>
+            <!-- Home Page -->
+            <main class="page active-page" id="homePage">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="container hero-content">
+                        <h1>شقق مخصصة للطلاب المغتربين في جميع أنحاء مصر</h1>
+                        <p>ابحث عن سكن آمن ومريح قريب من جامعتك أو مدرستك مع
+                            Next Home. حلول سكنية مصممة خصيصًا لاحتياجات
+                            الطلاب.</p>
+                        <div class="hero-btns">
+                            <a href="properties.html"
+                                class="btn btn-secondary glow-button"
+                                id="heroPropertiesBtn">تصفح الشقق</a>
+                            <a href="register.html" class="btn btn-outline"
+                                id="heroRegisterBtn">أنشئ حسابك الآن</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Features Section -->
+                <section class="section">
+                    <div class="container">
+                        <div class="section-title">
+                            <h2>لماذا تختار Next Home؟</h2>
+                            <p>منصة موثوقة مصممة خصيصًا لاحتياجات الطلاب
+                                المغتربين في مصر</p>
+                        </div>
+                        <div class="features-grid">
+                            <div class="feature-card card-hover">
+                                <div class="feature-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h3>شقق مخصصة للطلاب</h3>
+                                <p>شقق مجهزة بالكامل مع مرافق مصممة خصيصًا
+                                    لاحتياجات الطلاب</p>
+                            </div>
+                            <div class="feature-card card-hover">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3>أمان و رقابة</h3>
+                                <p>نظام أمان متكامل مع مشرفين ورقابة على مدار
+                                    الساعة</p>
+                            </div>
+                            <div class="feature-card card-hover">
+                                <div class="feature-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3>قريب من الجامعات</h3>
+                                <p>شقق قريبة من الجامعات والمدارس الكبرى في جميع
+                                    المحافظات</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Properties Section -->
+                <section class="section properties">
+                    <div class="container">
+                        <div class="section-title">
+                            <h2>أحدث الشقق المتوفرة</h2>
+                            <p>شقق مجهزة بالكامل للطلاب المغتربين</p>
+                        </div>
+                        <div class="property-grid" id="propertiesGrid">
+                            <!-- Properties will be loaded via JavaScript -->
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer>
+                <div class="container">
+                    <div class="footer-grid">
+                        <div class="footer-col">
+                            <h3>Next Home</h3>
+                            <p>منصة رائدة لتوفير سكن آمن ومريح للطلاب المغتربين
+                                في جميع أنحاء مصر. نحن نربط الطلاب بالشقق
+                                المثالية القريبة من جامعاتهم ومدارسهم.</p>
+                            <div class="social-links">
+                                <a href="#"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                        <div class="footer-col">
+                            <h3>روابط سريعة</h3>
+                            <ul>
+                                <li><a href="index.html"
+                                        id="footerHome">الرئيسية</a></li>
+                                <li><a href="properties.html"
+                                        id="footerProperties">الشقق</a></li>
+                                <li><a href="about.html" id="footerAbout">عن
+                                        المنصة</a></li>
+                                <li><a href="contact.html"
+                                        id="footerContact">اتصل بنا</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h3>الجامعات</h3>
+                            <ul>
+                                <li><a href="#">جامعة القاهرة</a></li>
+                                <li><a href="#">جامعة عين شمس</a></li>
+                                <li><a href="#">جامعة الإسكندرية</a></li>
+                                <li><a href="#">جامعة المنصورة</a></li>
+                                <li><a href="#">جامعة أسيوط</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h3>اتصل بنا</h3>
+                            <ul>
+                                <li><i class="fas fa-map-marker-alt"></i>
+                                    القاهرة، مصر</li>
+                                <li><i class="fas fa-phone"></i> 16588</li>
+                                <li><i class="fas fa-envelope"></i>
+                                    info@nexthome.eg</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        <p>&copy; 2025 Next Home Egypt. جميع الحقوق محفوظة.</p>
+                    </div>
+                </div>
+            </footer>
+
+            <script src="js/main.js"></script>
+            <script>
         // Load properties on page load
         document.addEventListener('DOMContentLoaded', function() {
             loadProperties();
@@ -189,5 +223,5 @@
             }
         }
     </script>
-</body>
-</html>
+        </body>
+    </html>

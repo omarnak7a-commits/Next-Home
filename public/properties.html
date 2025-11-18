@@ -1,202 +1,258 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next Home Egypt - الشقق</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="arabic">
-    <!-- Navigation -->
-    <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo" id="homeLink">
-                <img src="ChatGPT Image 1 أكتوبر 2025، 09_45_25 م.png" alt="Next Home Logo">
-                <div class="logo-text">Next<span>Home</span></div>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html" id="navHome">الرئيسية</a></li>
-                    <li><a href="properties.html" class="active" id="navProperties">الشقق</a></li>
-                    <li><a href="about.html" id="navAbout">عن المنصة</a></li>
-                    <li><a href="contact.html" id="navContact">اتصل بنا</a></li>
-                </ul>
-            </nav>
-            <div class="auth-buttons">
-                <button class="btn btn-outline" id="loginBtn">تسجيل الدخول</button>
-                <button class="btn btn-secondary" id="registerBtn">إنشاء حساب</button>
-                <button class="language-toggle" id="langToggle">عربي</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Properties Page -->
-    <main class="page active-page" id="propertiesPage">
-        <section class="section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>جميع الشقق المتوفرة</h2>
-                    <p>ابحث عن شقتك المثالية القريبة من جامعتك أو مدرستك</p>
-                </div>
-                <div class="property-grid">
-                    <div class="property-card card-hover" onclick="window.location='property-detail.html?id=1'">
-                        <div class="property-img">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="property-info">
-                            <h3>شقة طلابية في القاهرة</h3>
-                            <div class="property-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> القاهرة الجديدة</span>
-                                <span><i class="fas fa-university"></i> قريب من الجامعة الأمريكية</span>
-                            </div>
-                            <div class="property-meta">
-                                <span>غرفتين نوم</span>
-                                <span>حمامين</span>
-                            </div>
-                            <div class="property-price">1800 ج.م / شهر</div>
-                        </div>
-                    </div>
-                    <div class="property-card card-hover" onclick="window.location='property-detail.html?id=2'">
-                        <div class="property-img">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="property-info">
-                            <h3>شقة طلابية في الإسكندرية</h3>
-                            <div class="property-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> سموحة</span>
-                                <span><i class="fas fa-university"></i> قريب من جامعة الإسكندرية</span>
-                            </div>
-                            <div class="property-meta">
-                                <span>غرفة نوم واحدة</span>
-                                <span>حمام واحد</span>
-                            </div>
-                            <div class="property-price">1200 ج.م / شهر</div>
-                        </div>
-                    </div>
-                    <div class="property-card card-hover" onclick="window.location='property-detail.html?id=3'">
-                        <div class="property-img">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="property-info">
-                            <h3>شقة طلابية في المنصورة</h3>
-                            <div class="property-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> الجامعة</span>
-                                <span><i class="fas fa-university"></i> قريب من جامعة المنصورة</span>
-                            </div>
-                            <div class="property-meta">
-                                <span>ثلاث غرف نوم</span>
-                                <span>حمامين</span>
-                            </div>
-                            <div class="property-price">2200 ج.م / شهر</div>
-                        </div>
-                    </div>
-                    <div class="property-card card-hover" onclick="window.location='property-detail.html?id=4'">
-                        <div class="property-img">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="property-info">
-                            <h3>شقة طلابية في أسيوط</h3>
-                            <div class="property-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> حي الجامعة</span>
-                                <span><i class="fas fa-university"></i> قريب من جامعة أسيوط</span>
-                            </div>
-                            <div class="property-meta">
-                                <span>غرفتين نوم</span>
-                                <span>حمام واحد</span>
-                            </div>
-                            <div class="property-price">1500 ج.م / شهر</div>
-                        </div>
-                    </div>
-                    <div class="property-card card-hover" onclick="window.location='property-detail.html?id=5'">
-                        <div class="property-img">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="property-info">
-                            <h3>شقة طلابية في طنطا</h3>
-                            <div class="property-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> وسط المدينة</span>
-                                <span><i class="fas fa-university"></i> قريب من جامعة طنطا</span>
-                            </div>
-                            <div class="property-meta">
-                                <span>غرفة نوم واحدة</span>
-                                <span>حمام واحد</span>
-                            </div>
-                            <div class="property-price">1000 ج.م / شهر</div>
-                        </div>
-                    </div>
-                    <div class="property-card card-hover" onclick="window.location='property-detail.html?id=6'">
-                        <div class="property-img">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="property-info">
-                            <h3>شقة طلابية في الزقازيق</h3>
-                            <div class="property-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> حي الجامعة</span>
-                                <span><i class="fas fa-university"></i> قريب من جامعة الزقازيق</span>
-                            </div>
-                            <div class="property-meta">
-                                <span>غرفتين نوم</span>
-                                <span>حمامين</span>
-                            </div>
-                            <div class="property-price">1600 ج.م / شهر</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Next Home</h3>
-                    <p>منصة رائدة لتوفير سكن آمن ومريح للطلاب المغتربين في جميع أنحاء مصر. نحن نربط الطلاب بالشقق المثالية القريبة من جامعاتهم ومدارسهم.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>روابط سريعة</h3>
-                    <ul>
-                        <li><a href="index.html" id="footerHome">الرئيسية</a></li>
-                        <li><a href="properties.html" id="footerProperties">الشقق</a></li>
-                        <li><a href="about.html" id="footerAbout">عن المنصة</a></li>
-                        <li><a href="contact.html" id="footerContact">اتصل بنا</a></li>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Next Home Egypt - الشقق</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="arabic light-mode">
+        <!-- Navigation -->
+        <header>
+            <div class="container header-container">
+                <a href="index.html" class="logo" id="homeLink">
+                    <img src="ChatGPT Image 1 أكتوبر 2025، 09_45_25 م.png"
+                        alt="Next Home Logo">
+                    <div class="logo-text">Next<span>Home</span></div>
+                </a>
+                <nav>
+                    <ul id="navList">
+                        <li><a href="index.html" class="active"
+                                id="navHome">الرئيسية</a></li>
+                        <li><a href="properties.html"
+                                id="navProperties">الشقق</a></li>
+                        <li><a href="about.html" id="navAbout">عن
+                                المنصة</a></li>
+                        <li><a href="contact.html" id="navContact">اتصل
+                                بنا</a></li>
+                        <!-- أيقونة البروفايل هتظهر هنا لما يكون مسجل دخول -->
                     </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <button class="language-toggle"
+                        id="langToggle">عربي</button>
+                    <div class="profile-icon" id="profileIcon"
+                        style="display: none;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <button class="btn btn-outline" id="authBtn">تسجيل
+                        الدخول</button>
                 </div>
-                <div class="footer-col">
-                    <h3>الجامعات</h3>
-                    <ul>
-                        <li><a href="#">جامعة القاهرة</a></li>
-                        <li><a href="#">جامعة عين شمس</a></li>
-                        <li><a href="#">جامعة الإسكندرية</a></li>
-                        <li><a href="#">جامعة المنصورة</a></li>
-                        <li><a href="#">جامعة أسيوط</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>اتصل بنا</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
-                        <li><i class="fas fa-phone"></i> 16588</li>
-                        <li><i class="fas fa-envelope"></i> info@nexthome.eg</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Next Home Egypt. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
+            </header>
 
-    <script src="js/main.js"></script>
-</body>
-</html>
+            <!-- Properties Page -->
+            <main class="page active-page" id="propertiesPage">
+                <section class="section">
+                    <div class="container">
+                        <div class="section-title">
+                            <h2>جميع الشقق المتوفرة</h2>
+                            <p>ابحث عن شقتك المثالية القريبة من جامعتك أو
+                                مدرستك</p>
+                        </div>
+                        <div class="property-grid">
+                            <div class="property-card card-hover"
+                                onclick="window.location='property-detail.html?id=1'">
+                                <div class="property-img">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="property-info">
+                                    <h3>شقة طلابية في القاهرة</h3>
+                                    <div class="property-meta">
+                                        <span><i
+                                                class="fas fa-map-marker-alt"></i>
+                                            القاهرة الجديدة</span>
+                                        <span><i class="fas fa-university"></i>
+                                            قريب من الجامعة الأمريكية</span>
+                                    </div>
+                                    <div class="property-meta">
+                                        <span>غرفتين نوم</span>
+                                        <span>حمامين</span>
+                                    </div>
+                                    <div class="property-price">1800 ج.م /
+                                        شهر</div>
+                                </div>
+                            </div>
+                            <div class="property-card card-hover"
+                                onclick="window.location='property-detail.html?id=2'">
+                                <div class="property-img">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="property-info">
+                                    <h3>شقة طلابية في الإسكندرية</h3>
+                                    <div class="property-meta">
+                                        <span><i
+                                                class="fas fa-map-marker-alt"></i>
+                                            سموحة</span>
+                                        <span><i class="fas fa-university"></i>
+                                            قريب من جامعة الإسكندرية</span>
+                                    </div>
+                                    <div class="property-meta">
+                                        <span>غرفة نوم واحدة</span>
+                                        <span>حمام واحد</span>
+                                    </div>
+                                    <div class="property-price">1200 ج.م /
+                                        شهر</div>
+                                </div>
+                            </div>
+                            <div class="property-card card-hover"
+                                onclick="window.location='property-detail.html?id=3'">
+                                <div class="property-img">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="property-info">
+                                    <h3>شقة طلابية في المنصورة</h3>
+                                    <div class="property-meta">
+                                        <span><i
+                                                class="fas fa-map-marker-alt"></i>
+                                            الجامعة</span>
+                                        <span><i class="fas fa-university"></i>
+                                            قريب من جامعة المنصورة</span>
+                                    </div>
+                                    <div class="property-meta">
+                                        <span>ثلاث غرف نوم</span>
+                                        <span>حمامين</span>
+                                    </div>
+                                    <div class="property-price">2200 ج.م /
+                                        شهر</div>
+                                </div>
+                            </div>
+                            <div class="property-card card-hover"
+                                onclick="window.location='property-detail.html?id=4'">
+                                <div class="property-img">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="property-info">
+                                    <h3>شقة طلابية في أسيوط</h3>
+                                    <div class="property-meta">
+                                        <span><i
+                                                class="fas fa-map-marker-alt"></i>
+                                            حي الجامعة</span>
+                                        <span><i class="fas fa-university"></i>
+                                            قريب من جامعة أسيوط</span>
+                                    </div>
+                                    <div class="property-meta">
+                                        <span>غرفتين نوم</span>
+                                        <span>حمام واحد</span>
+                                    </div>
+                                    <div class="property-price">1500 ج.م /
+                                        شهر</div>
+                                </div>
+                            </div>
+                            <div class="property-card card-hover"
+                                onclick="window.location='property-detail.html?id=5'">
+                                <div class="property-img">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="property-info">
+                                    <h3>شقة طلابية في طنطا</h3>
+                                    <div class="property-meta">
+                                        <span><i
+                                                class="fas fa-map-marker-alt"></i>
+                                            وسط المدينة</span>
+                                        <span><i class="fas fa-university"></i>
+                                            قريب من جامعة طنطا</span>
+                                    </div>
+                                    <div class="property-meta">
+                                        <span>غرفة نوم واحدة</span>
+                                        <span>حمام واحد</span>
+                                    </div>
+                                    <div class="property-price">1000 ج.م /
+                                        شهر</div>
+                                </div>
+                            </div>
+                            <div class="property-card card-hover"
+                                onclick="window.location='property-detail.html?id=6'">
+                                <div class="property-img">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="property-info">
+                                    <h3>شقة طلابية في الزقازيق</h3>
+                                    <div class="property-meta">
+                                        <span><i
+                                                class="fas fa-map-marker-alt"></i>
+                                            حي الجامعة</span>
+                                        <span><i class="fas fa-university"></i>
+                                            قريب من جامعة الزقازيق</span>
+                                    </div>
+                                    <div class="property-meta">
+                                        <span>غرفتين نوم</span>
+                                        <span>حمامين</span>
+                                    </div>
+                                    <div class="property-price">1600 ج.م /
+                                        شهر</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer>
+                <div class="container">
+                    <div class="footer-grid">
+                        <div class="footer-col">
+                            <h3>Next Home</h3>
+                            <p>منصة رائدة لتوفير سكن آمن ومريح للطلاب المغتربين
+                                في جميع أنحاء مصر. نحن نربط الطلاب بالشقق
+                                المثالية القريبة من جامعاتهم ومدارسهم.</p>
+                            <div class="social-links">
+                                <a href="#"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                        <div class="footer-col">
+                            <h3>روابط سريعة</h3>
+                            <ul>
+                                <li><a href="index.html"
+                                        id="footerHome">الرئيسية</a></li>
+                                <li><a href="properties.html"
+                                        id="footerProperties">الشقق</a></li>
+                                <li><a href="about.html" id="footerAbout">عن
+                                        المنصة</a></li>
+                                <li><a href="contact.html"
+                                        id="footerContact">اتصل بنا</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h3>الجامعات</h3>
+                            <ul>
+                                <li><a href="#">جامعة القاهرة</a></li>
+                                <li><a href="#">جامعة عين شمس</a></li>
+                                <li><a href="#">جامعة الإسكندرية</a></li>
+                                <li><a href="#">جامعة المنصورة</a></li>
+                                <li><a href="#">جامعة أسيوط</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h3>اتصل بنا</h3>
+                            <ul>
+                                <li><i class="fas fa-map-marker-alt"></i>
+                                    القاهرة، مصر</li>
+                                <li><i class="fas fa-phone"></i> 16588</li>
+                                <li><i class="fas fa-envelope"></i>
+                                    info@nexthome.eg</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        <p>&copy; 2025 Next Home Egypt. جميع الحقوق محفوظة.</p>
+                    </div>
+                </div>
+            </footer>
+
+            <script src="js/main.js"></script>
+        </body>
+    </html>

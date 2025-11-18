@@ -1,191 +1,234 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next Home Egypt - اتصل بنا</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="arabic">
-    <!-- Navigation -->
-    <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo" id="homeLink">
-                 <img src="ChatGPT Image 1 أكتوبر 2025، 09_45_25 م.png" alt="Next Home Logo">
-                <div class="logo-text">Next<span>Home</span></div>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html" id="navHome">الرئيسية</a></li>
-                    <li><a href="properties.html" id="navProperties">الشقق</a></li>
-                    <li><a href="about.html" id="navAbout">عن المنصة</a></li>
-                    <li><a href="contact.html" class="active" id="navContact">اتصل بنا</a></li>
-                </ul>
-            </nav>
-            <div class="auth-buttons">
-                <button class="btn btn-outline" id="loginBtn">تسجيل الدخول</button>
-                <button class="btn btn-secondary" id="registerBtn">إنشاء حساب</button>
-                <button class="language-toggle" id="langToggle">عربي</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Contact Page -->
-    <main class="page active-page" id="contactPage">
-        <section class="section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>اتصل بنا</h2>
-                    <p>نحن هنا لمساعدتك! تواصل معنا لأي استفسار أو دعم</p>
-                </div>
-                <div class="contact-container">
-                    <div class="contact-info">
-                        <h3>معلومات التواصل</h3>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>عنوان المكتب</h4>
-                                <p>مدينة نصر، القاهرة، مصر</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>الهاتف</h4>
-                                <p>16588 (من داخل مصر)</p>
-                                <p>+20 100 123 4567 (من خارج مصر)</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>البريد الإلكتروني</h4>
-                                <p>info@nexthome.eg</p>
-                                <p>support@nexthome.eg</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>ساعات العمل</h4>
-                                <p>الأحد - الخميس: 9 صباحًا - 5 مساءً</p>
-                                <p>الجمعة - السبت: 10 صباحًا - 2 ظهرًا</p>
-                            </div>
-                        </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Next Home Egypt - اتصل بنا</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="arabic light-mode">
+        <!-- Navigation -->
+        <header>
+            <div class="container header-container">
+                <a href="index.html" class="logo" id="homeLink">
+                    <img src="ChatGPT Image 1 أكتوبر 2025، 09_45_25 م.png"
+                        alt="Next Home Logo">
+                    <div class="logo-text">Next<span>Home</span></div>
+                </a>
+                <nav>
+                    <ul id="navList">
+                        <li><a href="index.html" class="active"
+                                id="navHome">الرئيسية</a></li>
+                        <li><a href="properties.html"
+                                id="navProperties">الشقق</a></li>
+                        <li><a href="about.html" id="navAbout">عن
+                                المنصة</a></li>
+                        <li><a href="contact.html" id="navContact">اتصل
+                                بنا</a></li>
+                        <!-- أيقونة البروفايل هتظهر هنا لما يكون مسجل دخول -->
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <button class="language-toggle"
+                        id="langToggle">عربي</button>
+                    <div class="profile-icon" id="profileIcon"
+                        style="display: none;">
+                        <i class="fas fa-user"></i>
                     </div>
-                    <div class="contact-form">
-                        <h3>أرسل لنا رسالة</h3>
-                        <form id="contactForm">
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="name">الاسم الكامل</label>
-                                    <input type="text" id="name" placeholder="أدخل اسمك الكامل" required>
+                    <button class="btn btn-outline" id="authBtn">تسجيل
+                        الدخول</button>
+                </div>
+            </header>
+
+            <!-- Contact Page -->
+            <main class="page active-page" id="contactPage">
+                <section class="section">
+                    <div class="container">
+                        <div class="section-title">
+                            <h2>اتصل بنا</h2>
+                            <p>نحن هنا لمساعدتك! تواصل معنا لأي استفسار أو
+                                دعم</p>
+                        </div>
+                        <div class="contact-container">
+                            <div class="contact-info">
+                                <h3>معلومات التواصل</h3>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h4>عنوان المكتب</h4>
+                                        <p>مدينة نصر، القاهرة، مصر</p>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="email">البريد الإلكتروني</label>
-                                    <input type="email" id="email" placeholder="example@domain.com" required>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h4>الهاتف</h4>
+                                        <p>16588 (من داخل مصر)</p>
+                                        <p>+20 100 123 4567 (من خارج مصر)</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h4>البريد الإلكتروني</h4>
+                                        <p>info@nexthome.eg</p>
+                                        <p>support@nexthome.eg</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h4>ساعات العمل</h4>
+                                        <p>الأحد - الخميس: 9 صباحًا - 5
+                                            مساءً</p>
+                                        <p>الجمعة - السبت: 10 صباحًا - 2
+                                            ظهرًا</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="subject">الموضوع</label>
-                                <select id="subject" required>
-                                    <option value="">اختر الموضوع</option>
-                                    <option value="general">استفسار عام</option>
-                                    <option value="booking">استفسار عن الحجز</option>
-                                    <option value="complaint">شكوى</option>
-                                    <option value="support">دعم فني</option>
-                                    <option value="partnership">شراكة تجارية</option>
-                                </select>
+                            <div class="contact-form">
+                                <h3>أرسل لنا رسالة</h3>
+                                <form id="contactForm">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="name">الاسم
+                                                الكامل</label>
+                                            <input type="text" id="name"
+                                                placeholder="أدخل اسمك الكامل"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">البريد
+                                                الإلكتروني</label>
+                                            <input type="email" id="email"
+                                                placeholder="example@domain.com"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="subject">الموضوع</label>
+                                        <select id="subject" required>
+                                            <option value>اختر الموضوع</option>
+                                            <option value="general">استفسار
+                                                عام</option>
+                                            <option value="booking">استفسار عن
+                                                الحجز</option>
+                                            <option
+                                                value="complaint">شكوى</option>
+                                            <option value="support">دعم
+                                                فني</option>
+                                            <option value="partnership">شراكة
+                                                تجارية</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">الرسالة</label>
+                                        <textarea id="message"
+                                            placeholder="اكتب رسالتك هنا..."
+                                            required></textarea>
+                                    </div>
+                                    <button type="submit"
+                                        class="btn btn-primary">إرسال
+                                        الرسالة</button>
+                                </form>
                             </div>
-                            <div class="form-group">
-                                <label for="message">الرسالة</label>
-                                <textarea id="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Map Section -->
+                <section class="section" style="background: var(--nh-light);">
+                    <div class="container">
+                        <div class="section-title">
+                            <h2>موقعنا</h2>
+                            <p>زرنا في مكتبنا الرئيسي</p>
+                        </div>
+                        <div class="map-container">
+                            <div class="map-placeholder">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <p>خريطة الموقع</p>
                             </div>
-                            <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
-                        </form>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer>
+                <div class="container">
+                    <div class="footer-grid">
+                        <div class="footer-col">
+                            <h3>Next Home</h3>
+                            <p>منصة رائدة لتوفير سكن آمن ومريح للطلاب المغتربين
+                                في جميع أنحاء مصر. نحن نربط الطلاب بالشقق
+                                المثالية القريبة من جامعاتهم ومدارسهم.</p>
+                            <div class="social-links">
+                                <a href="#"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                        <div class="footer-col">
+                            <h3>روابط سريعة</h3>
+                            <ul>
+                                <li><a href="index.html"
+                                        id="footerHome">الرئيسية</a></li>
+                                <li><a href="properties.html"
+                                        id="footerProperties">الشقق</a></li>
+                                <li><a href="about.html" id="footerAbout">عن
+                                        المنصة</a></li>
+                                <li><a href="contact.html"
+                                        id="footerContact">اتصل بنا</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h3>الجامعات</h3>
+                            <ul>
+                                <li><a href="#">جامعة القاهرة</a></li>
+                                <li><a href="#">جامعة عين شمس</a></li>
+                                <li><a href="#">جامعة الإسكندرية</a></li>
+                                <li><a href="#">جامعة المنصورة</a></li>
+                                <li><a href="#">جامعة أسيوط</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h3>اتصل بنا</h3>
+                            <ul>
+                                <li><i class="fas fa-map-marker-alt"></i>
+                                    القاهرة، مصر</li>
+                                <li><i class="fas fa-phone"></i> 16588</li>
+                                <li><i class="fas fa-envelope"></i>
+                                    info@nexthome.eg</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        <p>&copy; 2025 Next Home Egypt. جميع الحقوق محفوظة.</p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </footer>
 
-        <!-- Map Section -->
-        <section class="section" style="background: var(--nh-light);">
-            <div class="container">
-                <div class="section-title">
-                    <h2>موقعنا</h2>
-                    <p>زرنا في مكتبنا الرئيسي</p>
-                </div>
-                <div class="map-container">
-                    <div class="map-placeholder">
-                        <i class="fas fa-map-marked-alt"></i>
-                        <p>خريطة الموقع</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Next Home</h3>
-                    <p>منصة رائدة لتوفير سكن آمن ومريح للطلاب المغتربين في جميع أنحاء مصر. نحن نربط الطلاب بالشقق المثالية القريبة من جامعاتهم ومدارسهم.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>روابط سريعة</h3>
-                    <ul>
-                        <li><a href="index.html" id="footerHome">الرئيسية</a></li>
-                        <li><a href="properties.html" id="footerProperties">الشقق</a></li>
-                        <li><a href="about.html" id="footerAbout">عن المنصة</a></li>
-                        <li><a href="contact.html" id="footerContact">اتصل بنا</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>الجامعات</h3>
-                    <ul>
-                        <li><a href="#">جامعة القاهرة</a></li>
-                        <li><a href="#">جامعة عين شمس</a></li>
-                        <li><a href="#">جامعة الإسكندرية</a></li>
-                        <li><a href="#">جامعة المنصورة</a></li>
-                        <li><a href="#">جامعة أسيوط</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>اتصل بنا</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
-                        <li><i class="fas fa-phone"></i> 16588</li>
-                        <li><i class="fas fa-envelope"></i> info@nexthome.eg</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Next Home Egypt. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/main.js"></script>
-    <script>
+            <script src="js/main.js"></script>
+            <script>
         // Contact form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -193,5 +236,5 @@
             this.reset();
         });
     </script>
-</body>
-</html>
+        </body>
+    </html>
