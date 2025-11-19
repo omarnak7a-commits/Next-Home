@@ -1421,3 +1421,151 @@ footer {
         height: 35px;
     }
 }
+/* Navigation Icons */
+.notifications-icon, .settings-icon {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.notifications-icon:hover, .settings-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff4757;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 18px;
+    text-align: center;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* Skeleton Loading */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 8px;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeleton-text {
+    height: 20px;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.skeleton-img {
+    height: 200px;
+    border-radius: 12px;
+}
+
+/* Settings Page */
+.settings-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+}
+
+.settings-sidebar {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.settings-sidebar ul {
+    list-style: none;
+}
+
+.settings-sidebar li {
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.settings-sidebar li:hover,
+.settings-sidebar li.active {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.settings-content {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.theme-option:hover,
+.theme-option.active {
+    border-color: var(--nh-primary);
+}
+
+.theme-preview {
+    width: 50px;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.light-preview {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border: 1px solid #ddd;
+}
+
+.dark-preview {
+    background: linear-gradient(135deg, #121212, #1e1e1e);
+    border: 1px solid #333;
+}
+
+.dark-mode .settings-sidebar,
+.dark-mode .settings-content {
+    background: var(--card-dark);
+}

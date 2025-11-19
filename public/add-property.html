@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Home Egypt - إضافة شقة جديدة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="arabic light-mode">
+    <!-- Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo" id="homeLink">
+                <div class="logo-icon">NH</div>
+                <div class="logo-text">Next<span>Home</span></div>
+            </a>
+            <nav>
+    <ul id="navList">
+        <li><a href="index.html" class="active" id="navHome">الرئيسية</a></li>
+        <li><a href="properties.html" id="navProperties">الشقق</a></li>
+        <li><a href="about.html" id="navAbout">عن المنصة</a></li>
+        <li><a href="contact.html" id="navContact">اتصل بنا</a></li>
+    </ul>
+</nav>
+<div class="auth-buttons">
+    <button class="notifications-icon" id="notificationsBtn" style="display: none;">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+    </button>
+    <button class="settings-icon" id="settingsBtn">
+        <i class="fas fa-cog"></i>
+    </button>
+    <div class="profile-icon" id="profileIcon" style="display: none;">
+        <i class="fas fa-user"></i>
+    </div>
+    <button class="btn btn-outline" id="authBtn">تسجيل الدخول</button>
+</div>
+            <div class="auth-buttons">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <button class="language-toggle" id="langToggle">عربي</button>
+                <div class="profile-icon" id="profileIcon" style="display: none;">
+                    <i class="fas fa-user"></i>
+                </div>
+                <button class="btn btn-outline" id="authBtn">تسجيل الدخول</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Add Property Page -->
+    <main class="page active-page" id="addPropertyPage">
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>إضافة شقة جديدة</h2>
+                    <p>أضف شقتك للطلاب المغتربين</p>
+                </div>
+                <div class="auth-container">
+                    <form id="addPropertyForm">
+                        <div class="form-group">
+                            <label for="propertyTitle">عنوان الشقة</label>
+                            <input type="text" id="propertyTitle" placeholder="مثال: شقة طلابية في القاهرة" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyDescription">وصف الشقة</label>
+                            <textarea id="propertyDescription" placeholder="وصف مفصل للشقة والمرافق" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyLocation">الموقع</label>
+                            <input type="text" id="propertyLocation" placeholder="المنطقة، المدينة" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyCity">المدينة</label>
+                            <select id="propertyCity" required>
+                                <option value="">اختر المدينة</option>
+                                <option value="cairo">القاهرة</option>
+                                <option value="alexandria">الإسكندرية</option>
+                                <option value="mansoura">المنصورة</option>
+                                <option value="assuit">أسيوط</option>
+                                <option value="tanta">طنطا</option>
+                                <option value="zagazig">الزقازيق</option>
+                                <option value="helwan">حلوان</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyUniversity">الجامعة القريبة</label>
+                            <input type="text" id="propertyUniversity" placeholder="اسم الجامعة" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyPrice">السعر (ج.م / شهر)</label>
+                            <input type="number" id="propertyPrice" placeholder="1800" required>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="propertyBedrooms">عدد غرف النوم</label>
+                                <select id="propertyBedrooms" required>
+                                    <option value="1">غرفة واحدة</option>
+                                    <option value="2">غرفتين</option>
+                                    <option value="3">ثلاث غرف</option>
+                                    <option value="4">أربع غرف</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="propertyBathrooms">عدد الحمامات</label>
+                                <select id="propertyBathrooms" required>
+                                    <option value="1">حمام واحد</option>
+                                    <option value="2">حمامين</option>
+                                    <option value="3">ثلاث حمامات</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyArea">المساحة (متر مربع)</label>
+                            <input type="number" id="propertyArea" placeholder="80" required>
+                        </div>
+                        <div class="form-group">
+                            <label>المرافق</label>
+                            <div class="amenities-checkboxes">
+                                <label><input type="checkbox" value="wifi"> واي فاي</label>
+                                <label><input type="checkbox" value="parking"> موقف سيارات</label>
+                                <label><input type="checkbox" value="gym"> صالة رياضية</label>
+                                <label><input type="checkbox" value="laundry"> غسالة ونشافة</label>
+                                <label><input type="checkbox" value="security"> أمن 24/7</label>
+                                <label><input type="checkbox" value="cleaning"> خدمات نظافة</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="propertyImages">صور الشقة (اختر صور متعددة)</label>
+                            <input type="file" id="propertyImages" multiple accept="image/*">
+                            <div class="image-preview" id="imagePreview"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">إضافة الشقة</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // عرض صور المعاينة
+        document.getElementById('propertyImages').addEventListener('change', function(e) {
+            const preview = document.getElementById('imagePreview');
+            preview.innerHTML = '';
+            
+            if (this.files && this.files[0]) {
+                for (let i = 0; i < this.files.length; i++) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.width = '100px';
+                        img.style.height = '100px';
+                        img.style.margin = '5px';
+                        img.style.borderRadius = '8px';
+                        img.style.objectFit = 'cover';
+                        preview.appendChild(img);
+                    }
+                    reader.readAsDataURL(this.files[i]);
+                }
+            }
+        });
+        
+        // إضافة شقة جديدة
+        document.getElementById('addPropertyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // تحقق من تسجيل الدخول
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                alert('يجب تسجيل الدخول أولاً لإضافة شقة!');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            const property = {
+                id: Date.now(),
+                title: document.getElementById('propertyTitle').value,
+                description: document.getElementById('propertyDescription').value,
+                location: document.getElementById('propertyLocation').value,
+                city: document.getElementById('propertyCity').value,
+                university: document.getElementById('propertyUniversity').value,
+                price: parseInt(document.getElementById('propertyPrice').value),
+                bedrooms: document.getElementById('propertyBedrooms').value,
+                bathrooms: document.getElementById('propertyBathrooms').value,
+                area: parseInt(document.getElementById('propertyArea').value),
+                amenities: Array.from(document.querySelectorAll('.amenities-checkboxes input:checked')).map(cb => cb.value),
+                images: [], // المشورة: الصور هتتحفظ كـ Base64
+                ownerId: JSON.parse(currentUser).id,
+                createdAt: new Date().toISOString(),
+                available: true
+            };
+            
+            // حفظ الصور كـ Base64 (للمعاينة فقط - في الواقع محتاج سيرفر)
+            const imageInput = document.getElementById('propertyImages');
+            if (imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    property.images.push(e.target.result);
+                    saveProperty(property);
+                }
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                saveProperty(property);
+            }
+        });
+        
+        function saveProperty(property) {
+            // حفظ الشقة في localStorage
+            const properties = JSON.parse(localStorage.getItem('properties') || '[]');
+            properties.push(property);
+            localStorage.setItem('properties', JSON.stringify(properties));
+            
+            alert('تم إضافة الشقة بنجاح!');
+            window.location.href = 'properties.html';
+        }
+    </script>
+    
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .amenities-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .amenities-checkboxes label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .image-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .amenities-checkboxes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

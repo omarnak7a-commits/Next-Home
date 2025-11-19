@@ -24,18 +24,26 @@
                     <div class="logo-text">Next<span>Home</span></div>
                 </a>
                 <nav>
-                    <ul id="navList">
-                        <li><a href="index.html" class="active"
-                                id="navHome">الرئيسية</a></li>
-                        <li><a href="properties.html"
-                                id="navProperties">الشقق</a></li>
-                        <li><a href="about.html" id="navAbout">عن
-                                المنصة</a></li>
-                        <li><a href="contact.html" id="navContact">اتصل
-                                بنا</a></li>
-                        <!-- أيقونة البروفايل هتظهر هنا لما يكون مسجل دخول -->
-                    </ul>
-                </nav>
+    <ul id="navList">
+        <li><a href="index.html" class="active" id="navHome">الرئيسية</a></li>
+        <li><a href="properties.html" id="navProperties">الشقق</a></li>
+        <li><a href="about.html" id="navAbout">عن المنصة</a></li>
+        <li><a href="contact.html" id="navContact">اتصل بنا</a></li>
+    </ul>
+</nav>
+<div class="auth-buttons">
+    <button class="notifications-icon" id="notificationsBtn" style="display: none;">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+    </button>
+    <button class="settings-icon" id="settingsBtn">
+        <i class="fas fa-cog"></i>
+    </button>
+    <div class="profile-icon" id="profileIcon" style="display: none;">
+        <i class="fas fa-user"></i>
+    </div>
+    <button class="btn btn-outline" id="authBtn">تسجيل الدخول</button>
+</div>
                 <div class="auth-buttons">
                     <button class="theme-toggle" id="themeToggle">🌙</button>
                     <button class="language-toggle"
@@ -52,22 +60,45 @@
             <!-- Home Page -->
             <main class="page active-page" id="homePage">
                 <!-- Hero Section -->
-                <section class="hero">
-                    <div class="container hero-content">
-                        <h1>شقق مخصصة للطلاب المغتربين في جميع أنحاء مصر</h1>
-                        <p>ابحث عن سكن آمن ومريح قريب من جامعتك أو مدرستك مع
-                            Next Home. حلول سكنية مصممة خصيصًا لاحتياجات
-                            الطلاب.</p>
-                        <div class="hero-btns">
-                            <a href="properties.html"
-                                class="btn btn-secondary glow-button"
-                                id="heroPropertiesBtn">تصفح الشقق</a>
-                            <a href="register.html" class="btn btn-outline"
-                                id="heroRegisterBtn">أنشئ حسابك الآن</a>
-                        </div>
-                    </div>
-                </section>
-
+                <!-- Properties Section -->
+<section class="section properties">
+    <div class="container">
+        <div class="section-title">
+            <h2>أحدث الشقق المتوفرة</h2>
+            <p>شقق مجهزة بالكامل للطلاب المغتربين</p>
+        </div>
+        <div class="property-grid" id="propertiesGrid">
+            <!-- Skeleton loading -->
+            <div class="property-card skeleton">
+                <div class="property-img skeleton-img"></div>
+                <div class="property-info">
+                    <div class="skeleton-text" style="width: 80%; height: 24px; margin: 0 auto 10px;"></div>
+                    <div class="skeleton-text" style="width: 60%; height: 16px; margin: 0 auto 10px;"></div>
+                    <div class="skeleton-text" style="width: 50%; height: 16px; margin: 0 auto 10px;"></div>
+                    <div class="skeleton-text" style="width: 40%; height: 20px; margin: 10px auto 0;"></div>
+                </div>
+            </div>
+            <div class="property-card skeleton">
+                <div class="property-img skeleton-img"></div>
+                <div class="property-info">
+                    <div class="skeleton-text" style="width: 80%; height: 24px; margin: 0 auto 10px;"></div>
+                    <div class="skeleton-text" style="width: 60%; height: 16px; margin: 0 auto 10px;"></div>
+                    <div class="skeleton-text" style="width: 50%; height: 16px; margin: 0 auto 10px;"></div>
+                    <div class="skeleton-text" style="width: 40%; height: 20px; margin: 10px auto 0;"></div>
+                </div>
+            </div>
+            <div class="property-card skeleton">
+                <div class="property-img skeleton-img"></div>
+                <div class="property-info">
+                    <div class="skeleton-text" style="width: 80%; height: 24px; margin: 0 auto 10px;"></div>
+                    <div class="skeleton-text" style="width: 60%; height: 16px; margin: 0 auto 10px;"></div>
+                    <div class="skeleton-text" style="width: 50%; height: 16px; margin: 0 auto 10px;"></div>
+                    <div class="skeleton-text" style="width: 40%; height: 20px; margin: 10px auto 0;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
                 <!-- Features Section -->
                 <section class="section">
                     <div class="container">
