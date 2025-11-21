@@ -63,38 +63,17 @@ function updateContent(language) {
     }
 }
 
-// Dark/Light Mode Toggle
-function toggleTheme() {
-    const body = document.body;
-    const themeToggle = document.getElementById('themeToggle');
-    
-    if (body.classList.contains('light-mode')) {
-        body.classList.remove('light-mode');
-        body.classList.add('dark-mode');
-        themeToggle.textContent = '☀️';
-        localStorage.setItem('theme', 'dark');
-    } else {
-        body.classList.remove('dark-mode');
-        body.classList.add('light-mode');
-        themeToggle.textContent = '🌙';
-        localStorage.setItem('theme', 'light');
-    }
-}
-
 // Load saved theme
 function loadSavedTheme() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     const body = document.body;
-    const themeToggle = document.getElementById('themeToggle');
     
     if (savedTheme === 'dark') {
         body.classList.remove('light-mode');
         body.classList.add('dark-mode');
-        if (themeToggle) themeToggle.textContent = '☀️';
     } else {
         body.classList.remove('dark-mode');
         body.classList.add('light-mode');
-        if (themeToggle) themeToggle.textContent = '🌙';
     }
 }
 
@@ -105,8 +84,21 @@ function updateAuthUI() {
     const profileIcon = document.getElementById('profileIcon');
     const notificationsBtn = document.getElementById('notificationsBtn');
     const settingsBtn = document.getElementById('settingsBtn');
-    
+    const addPropertyBtn = document.getElementById('addPropertyBtn');
+    if (notificationsBtn) {
+    notificationsBtn.style.display = 'block';
+    notificationsBtn.onclick = function() {
+        window.location.href = 'notifications.html';
+    };
+    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+    if (bookings.length > 0) {
+        const notificationBadge = document.getElementById('notificationBadge');
+        notificationBadge.textContent = bookings.length;
+        notificationBadge.style.display = 'block';
+    }
+}
     if (currentUser) {
+        // User is logged in
         if (authBtn) {
             authBtn.textContent = 'تسجيل الخروج';
             authBtn.onclick = function(e) {
@@ -134,7 +126,16 @@ function updateAuthUI() {
                 notificationBadge.style.display = 'block';
             }
         }
+        
+        // Show "Add Property" button for logged in users
+        if (addPropertyBtn) {
+            addPropertyBtn.style.display = 'block';
+            addPropertyBtn.onclick = function() {
+                window.location.href = 'add-property.html';
+            };
+        }
     } else {
+        // User is not logged in
         if (authBtn) {
             authBtn.textContent = 'تسجيل الدخول';
             authBtn.onclick = function(e) {
@@ -150,8 +151,13 @@ function updateAuthUI() {
         if (notificationsBtn) {
             notificationsBtn.style.display = 'none';
         }
+        
+        if (addPropertyBtn) {
+            addPropertyBtn.style.display = 'none';
+        }
     }
     
+    // Settings button functionality
     if (settingsBtn) {
         settingsBtn.onclick = function() {
             window.location.href = 'settings.html';
@@ -160,10 +166,9 @@ function updateAuthUI() {
 }
 
 // Check if user is logged in for protected pages
-// Check if user is logged in for protected pages
 function checkAuthForProtectedPages() {
     const currentPage = window.location.pathname.split('/').pop();
-    const protectedPages = ['profile.html']; // صفحة البروفايل بس المحمية
+    const protectedPages = ['profile.html', 'property-detail.html', 'add-property.html'];
     const currentUser = localStorage.getItem('currentUser');
     
     if (protectedPages.includes(currentPage) && !currentUser) {
@@ -174,71 +179,8 @@ function checkAuthForProtectedPages() {
     }
 }
 
-// API call helper
-async function apiCall(url, options = {}) {
-    const defaultOptions = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-    
-    const config = {
-        ...defaultOptions,
-        ...options
-    };
-    
-    try {
-        const response = await fetch(url, config);
-        return await response.json();
-    } catch (error) {
-        console.error('API Error:', error);
-        throw error;
-    }
-}
-
-// Initialize the app
-document.addEventListener('DOMContentLoaded', function() {
-    // Load saved theme
-    loadSavedTheme();
-    
-    // Check authentication for protected pages
-    checkAuthForProtectedPages();
-    
-    // Update auth UI
-    updateAuthUI();
-    // إضافة رابط "إضافة شقة" للمستخدمين المسجلين
-const navList = document.getElementById('navList');
-if (currentUser && navList && !document.getElementById('navAddProperty')) {
-    const addPropertyItem = document.createElement('li');
-    addPropertyItem.id = 'navAddProperty';
-    addPropertyItem.innerHTML = '<a href="add-property.html">إضافة شقة</a>';
-    navList.appendChild(addPropertyItem);
-} else {
-    const addPropertyItem = document.getElementById('navAddProperty');
-    if (addPropertyItem) {
-        addPropertyItem.remove();
-    }
-}
-    
-    // Language toggle
-    const langToggle = document.getElementById('langToggle');
-    if (langToggle) {
-        langToggle.addEventListener('click', toggleLanguage);
-    }
-    
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    }
-    
-    // Load properties on home page
-    if (document.getElementById('homePage')) {
-        loadProperties();
-    }
-    
-    // Load all properties for properties page
-function loadAllProperties() {
+// Load properties for home page with skeleton loading
+function loadProperties() {
     // Load properties from localStorage first
     let properties = JSON.parse(localStorage.getItem('properties') || '[]');
     
@@ -251,48 +193,84 @@ function loadAllProperties() {
         ];
     }
     
+    // Remove skeleton and load actual properties
     const propertiesGrid = document.getElementById('propertiesGrid');
     if (propertiesGrid) {
-        propertiesGrid.innerHTML = '';
-        properties.forEach(property => {
-            const propertyCard = document.createElement('div');
-            propertyCard.className = 'property-card card-hover';
-            propertyCard.onclick = () => window.location.href = `property-detail.html?id=${property.id}`;
-            
-            // تحديد عدد غرف النوم و الحمامات للعرض
-            let bedroomsText = property.bedrooms;
-            let bathroomsText = property.bathrooms;
-            
-            // لو البيانات من localStorage (رقم) وليس نص
-            if (typeof property.bedrooms === 'number') {
-                bedroomsText = `${property.bedrooms} ${property.bedrooms === 1 ? 'غرفة نوم' : 'غرف نوم'}`;
-            }
-            if (typeof property.bathrooms === 'number') {
-                bathroomsText = `${property.bathrooms} ${property.bathrooms === 1 ? 'حمام' : 'حمامات'}`;
-            }
-            
-            propertyCard.innerHTML = `
-                <div class="property-img">
-                    <i class="fas fa-home"></i>
-                </div>
-                <div class="property-info">
-                    <h3>${property.title}</h3>
-                    <div class="property-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> ${property.location}</span>
-                        <span><i class="fas fa-university"></i> ${property.university}</span>
+        // Wait a bit to show skeleton loading effect
+        setTimeout(() => {
+            propertiesGrid.innerHTML = '';
+            properties.forEach(property => {
+                const propertyCard = document.createElement('div');
+                propertyCard.className = 'property-card card-hover';
+                propertyCard.onclick = () => window.location.href = `property-detail.html?id=${property.id}`;
+                
+                // تحديد عدد غرف النوم و الحمامات للعرض
+                let bedroomsText = property.bedrooms;
+                let bathroomsText = property.bathrooms;
+                
+                // لو البيانات من localStorage (رقم) وليس نص
+                if (typeof property.bedrooms === 'number') {
+                    bedroomsText = `${property.bedrooms} ${property.bedrooms === 1 ? 'غرفة نوم' : 'غرف نوم'}`;
+                }
+                if (typeof property.bathrooms === 'number') {
+                    bathroomsText = `${property.bathrooms} ${property.bathrooms === 1 ? 'حمام' : 'حمامات'}`;
+                }
+                
+                propertyCard.innerHTML = `
+                    <div class="property-img">
+                        <i class="fas fa-home"></i>
                     </div>
-                    <div class="property-meta">
-                        <span>${bedroomsText}</span>
-                        <span>${bathroomsText}</span>
+                    <div class="property-info">
+                        <h3>${property.title}</h3>
+                        <div class="property-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> ${property.location}</span>
+                            <span><i class="fas fa-university"></i> ${property.university}</span>
+                        </div>
+                        <div class="property-meta">
+                            <span>${bedroomsText}</span>
+                            <span>${bathroomsText}</span>
+                        </div>
+                        <div class="property-price">${property.price} ج.م / شهر</div>
                     </div>
-                    <div class="property-price">${property.price} ج.م / شهر</div>
-                </div>
-            `;
-            
-            propertiesGrid.appendChild(propertyCard);
-        });
+                `;
+                
+                propertiesGrid.appendChild(propertyCard);
+            });
+        }, 800); // Show skeleton for 0.8 seconds
     }
 }
+
+// Load all properties for properties page
+function loadAllProperties() {
+    loadProperties(); // Same as home page for now
+}
+
+// Initialize the app
+document.addEventListener('DOMContentLoaded', function() {
+    // Load saved theme
+    loadSavedTheme();
+    
+    // Check authentication for protected pages
+    checkAuthForProtectedPages();
+    
+    // Update auth UI
+    updateAuthUI();
+    
+    // Language toggle
+    const langToggle = document.getElementById('langToggle');
+    if (langToggle) {
+        langToggle.addEventListener('click', toggleLanguage);
+    }
+    
+    // Load properties on home page
+    if (document.getElementById('homePage')) {
+        loadProperties();
+    }
+    
+    // Load properties on properties page
+    if (document.getElementById('propertiesPage')) {
+        loadAllProperties();
+    }
     
     // Home page button navigation
     const heroRegisterBtn = document.getElementById('heroRegisterBtn');
@@ -310,54 +288,159 @@ function loadAllProperties() {
             window.location.href = 'properties.html';
         });
     }
-});
-
-// Load properties for home page
-function loadProperties() {
-    // For demo purposes, we'll use static data
-    const properties = [
-        { id: '1', title: 'شقة طلابية في القاهرة', location: 'القاهرة الجديدة', university: 'الجامعة الأمريكية', bedrooms: 'غرفتين نوم', bathrooms: 'حمامين', price: '1800 ج.م / شهر' },
-        { id: '2', title: 'شقة طلابية في الإسكندرية', location: 'سموحة', university: 'جامعة الإسكندرية', bedrooms: 'غرفة نوم واحدة', bathrooms: 'حمام واحد', price: '1200 ج.م / شهر' },
-        { id: '3', title: 'شقة طلابية في المنصورة', location: 'الجامعة', university: 'جامعة المنصورة', bedrooms: 'ثلاث غرف نوم', bathrooms: 'حمامين', price: '2200 ج.م / شهر' }
-    ];
     
-    // Remove skeleton and load actual properties
-    const propertiesGrid = document.getElementById('propertiesGrid');
-    if (propertiesGrid) {
-        // Wait a bit to show skeleton loading effect
-        setTimeout(() => {
-            propertiesGrid.innerHTML = '';
-            properties.forEach(property => {
-                const propertyCard = document.createElement('div');
-                propertyCard.className = 'property-card card-hover';
-                propertyCard.onclick = () => window.location.href = `property-detail.html?id=${property.id}`;
-                
-                propertyCard.innerHTML = `
-                    <div class="property-img">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="property-info">
-                        <h3>${property.title}</h3>
-                        <div class="property-meta">
-                            <span><i class="fas fa-map-marker-alt"></i> ${property.location}</span>
-                            <span><i class="fas fa-university"></i> ${property.university}</span>
-                        </div>
-                        <div class="property-meta">
-                            <span>${property.bedrooms}</span>
-                            <span>${property.bathrooms}</span>
-                        </div>
-                        <div class="property-price">${property.price}</div>
-                    </div>
-                `;
-                
-                propertiesGrid.appendChild(propertyCard);
-            });
-        }, 800); // Show skeleton for 0.8 seconds
+    // Update navbar active state
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === currentPage || 
+            (currentPage === '' && link.getAttribute('href') === 'index.html') ||
+            (currentPage === 'index.html' && link.getAttribute('href') === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+});
+// إضافة إشعار جديد
+function addNotification(title, message, icon = 'fas fa-bell') {
+    const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
+    const newNotification = {
+        id: Date.now(),
+        title: title,
+        message: message,
+        icon: icon,
+        timestamp: new Date().toISOString(),
+        read: false
+    };
+    
+    notifications.unshift(newNotification); // أضف في البداية
+    localStorage.setItem('notifications', JSON.stringify(notifications));
+    
+    // تحديث شارة الإشعارات
+    updateNotificationBadge();
+}
+
+// تحديث شارة الإشعارات
+function updateNotificationBadge() {
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) return;
+    
+    const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
+    const unreadCount = notifications.filter(n => !n.read).length;
+    
+    const notificationBadge = document.getElementById('notificationBadge');
+    if (notificationBadge) {
+        if (unreadCount > 0) {
+            notificationBadge.textContent = unreadCount > 99 ? '99+' : unreadCount;
+            notificationBadge.style.display = 'block';
+        } else {
+            notificationBadge.style.display = 'none';
+        }
+    }
+    
+    // تحديث زر الإشعارات
+    const notificationsBtn = document.getElementById('notificationsBtn');
+    if (notificationsBtn) {
+        notificationsBtn.style.display = 'block';
     }
 }
 
-// Load all properties for properties page
-function loadAllProperties() {
-    // Same as loadProperties but can be expanded
-    loadProperties();
-} 
+// دالة لحجز شقة مع إشعار
+function bookPropertyWithNotification() {
+    // تحقق من تسجيل الدخول
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) {
+        alert('يجب تسجيل الدخول أولاً لحجز شقة!');
+        window.location.href = 'login.html';
+        return;
+    }
+    
+    // بيانات الشقة (من الصفحة الحالية)
+    const propertyTitle = document.getElementById('propertyTitle')?.textContent || 'شقة غير معروفة';
+    const propertyPrice = document.getElementById('propertyPrice')?.textContent || '0 ج.م';
+    
+    // استخراج السعر الرقمي
+    const priceMatch = propertyPrice.match(/(\d+)/);
+    const priceNum = priceMatch ? parseInt(priceMatch[1]) : 1800;
+    const totalPrice = priceNum * 3; // لمدة 3 أشهر
+    
+    // إنشاء فاتورة
+    const invoiceHtml = `
+        <div style="font-family: Cairo, Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 20px; border: 2px solid #004d80; border-radius: 10px;">
+            <h2 style="text-align: center; color: #004d80; margin-bottom: 20px;">فاتورة دفع</h2>
+            <h3 style="text-align: center; color: #ffcc00; margin-bottom: 30px;">Next Home Egypt</h3>
+            
+            <div style="margin-bottom: 15px;">
+                <strong>رقم الفاتورة:</strong> NH-${Date.now().toString().slice(-6)}
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>التاريخ:</strong> ${new Date().toLocaleDateString('ar-EG')}
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>الشقة:</strong> ${propertyTitle}
+            </div>
+            
+            <div style="margin: 20px 0; padding: 15px; background: #f0f8ff; border-radius: 5px;">
+                <h4>تفاصيل الدفع:</h4>
+                <p><strong>السعر الشهري:</strong> ${priceNum} ج.م</p>
+                <p><strong>المدة:</strong> 3 أشهر</p>
+                <p><strong>إجمالي المبلغ:</strong> ${totalPrice} ج.م</p>
+            </div>
+            
+            <div style="text-align: center; font-size: 20px; font-weight: bold; color: #2a9d8f; margin-top: 20px;">
+                <strong>تم الدفع بنجاح! ✅</strong>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px; color: #666;">
+                شكراً لثقتكم بـ Next Home Egypt!
+            </div>
+        </div>
+    `;
+    
+    // إظهار رسالة تأكيد
+    alert('تم الدفع بنجاح! سيتم عرض الفاتورة الآن.');
+    
+    // عرض الفاتورة
+    const invoiceWindow = window.open('', '_blank', 'width=700,height=600');
+    invoiceWindow.document.write(`
+        <!DOCTYPE html>
+        <html dir="rtl">
+        <head>
+            <meta charset="UTF-8">
+            <title>فاتورة Next Home</title>
+            <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+            <style>
+                body { margin: 0; padding: 20px; background: white; }
+            </style>
+        </head>
+        <body>
+            ${invoiceHtml}
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="window.print()" style="padding: 10px 20px; background: #004d80; color: white; border: none; border-radius: 5px; cursor: pointer; font-family: Cairo, Arial, sans-serif;">طباعة الفاتورة</button>
+                <button onclick="window.close()" style="padding: 10px 20px; background: #ffcc00; color: #004d80; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px; font-family: Cairo, Arial, sans-serif;">إغلاق</button>
+            </div>
+        </body>
+        </html>
+    `);
+    invoiceWindow.document.close();
+    
+    // حفظ الحجز
+    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+    bookings.push({
+        id: Date.now(),
+        userId: JSON.parse(currentUser).id,
+        propertyId: propertyTitle,
+        checkIn: new Date().toISOString(),
+        duration: 3,
+        totalPrice: totalPrice,
+        createdAt: new Date().toISOString()
+    });
+    localStorage.setItem('bookings', JSON.stringify(bookings));
+    
+    // إضافة إشعار
+    addNotification(
+        'تم الحجز بنجاح!',
+        `تم حجز شقة "${propertyTitle}" بنجاح. رقم الفاتورة: NH-${Date.now().toString().slice(-6)}`,
+        'fas fa-check-circle'
+    );
+}

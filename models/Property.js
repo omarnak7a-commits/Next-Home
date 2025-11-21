@@ -18,8 +18,7 @@ const PropertySchema = new mongoose.Schema({
   },
   city: {
     type: String,
-    required: [true, 'Please add a city'],
-    enum: ['cairo', 'alexandria', 'mansoura', 'assuit', 'tanta', 'zagazig', 'helwan']
+    required: [true, 'Please add a city']
   },
   university: {
     type: String,
@@ -45,9 +44,10 @@ const PropertySchema = new mongoose.Schema({
     type: [String],
     required: true
   },
-  images: {
-    type: [String],
-    default: []
+  ownerId: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: true
   },
   available: {
     type: Boolean,
@@ -57,15 +57,6 @@ const PropertySchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
-}, {
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true }
-});
-
-// Cascade delete bookings when property is deleted
-PropertySchema.pre('remove', async function(next) {
-  await this.model('Booking').deleteMany({ property: this._id });
-  next();
 });
 
 module.exports = mongoose.model('Property', PropertySchema);

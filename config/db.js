@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const connectDB = async () => {
   try {
-    // استخدام MongoDB بدون الحاجة لتثبيت MongoDB محلي
-    const conn = await mongoose.connect('mongodb://localhost:27017/nexthome', {
+    const conn = await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

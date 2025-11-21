@@ -1,5 +1,6 @@
 const express = require('express');
 const Property = require('../models/Property');
+const User = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
 
@@ -9,7 +10,7 @@ const router = express.Router();
 // @route   GET /api/properties
 // @access  Public
 router.get('/', asyncHandler(async (req, res, next) => {
-  const properties = await Property.find();
+  const properties = await Property.find().populate('ownerId', 'name');
   res.status(200).json({
     success: true,
     count: properties.length,
@@ -17,68 +18,18 @@ router.get('/', asyncHandler(async (req, res, next) => {
   });
 }));
 
-// @desc    Get single property
-// @route   GET /api/properties/:id
-// @access  Public
-router.get('/:id', asyncHandler(async (req, res, next) => {
-  const property = await Property.findById(req.params.id);
-
-  if (!property) {
-    return next(new ErrorResponse('Property not found', 404));
-  }
-
-  res.status(200).json({
-    success: true,
-    data: property
-  });
-}));
-
 // @desc    Create new property
 // @route   POST /api/properties
-// @access  Private/Admin
+// @access  Private
 router.post('/', asyncHandler(async (req, res, next) => {
+  // Get user from protect middleware
+  req.body.ownerId = req.user.id;
+  
   const property = await Property.create(req.body);
-
+  
   res.status(201).json({
     success: true,
     data: property
-  });
-}));
-
-// @desc    Update property
-// @route   PUT /api/properties/:id
-// @access  Private/Admin
-router.put('/:id', asyncHandler(async (req, res, next) => {
-  const property = await Property.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true
-  });
-
-  if (!property) {
-    return next(new ErrorResponse('Property not found', 404));
-  }
-
-  res.status(200).json({
-    success: true,
-    data: property
-  });
-}));
-
-// @desc    Delete property
-// @route   DELETE /api/properties/:id
-// @access  Private/Admin
-router.delete('/:id', asyncHandler(async (req, res, next) => {
-  const property = await Property.findById(req.params.id);
-
-  if (!property) {
-    return next(new ErrorResponse('Property not found', 404));
-  }
-
-  await property.remove();
-
-  res.status(200).json({
-    success: true,
-    data: {}
   });
 }));
 
