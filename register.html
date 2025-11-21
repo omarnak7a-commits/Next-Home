@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Next Home Egypt - إنشاء حساب</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="arabic">
+        <!-- Navigation -->
+        <header>
+            <div class="container header-container">
+                <a href="index.html" class="logo" id="homeLink">
+                     <img src="ChatGPT Image 1 أكتوبر 2025، 09_45_25 م.png"
+                        alt="Next Home Logo">
+                    <div class="logo-text">Next<span>Home</span></div>
+                </a>
+            </div>
+        </header>
+
+        <!-- Register Page -->
+        <main class="page active-page" id="registerPage">
+            <section class="section">
+                <div class="container">
+                    <div class="auth-container">
+                        <div class="auth-header">
+                            <h2>إنشاء حساب جديد</h2>
+                            <p>أنشئ حسابك للعثور على شقتك المثالية</p>
+                        </div>
+                        <form id="registerForm">
+                            <div class="form-group">
+                                <label for="fullName">الاسم الكامل</label>
+                                <input type="text" id="fullName"
+                                    placeholder="أدخل اسمك الكامل" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerEmail">البريد
+                                    الإلكتروني</label>
+                                <input type="email" id="registerEmail"
+                                    placeholder="example@domain.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="university">الجامعة أو
+                                    المدرسة</label>
+                                <select id="university" required>
+                                    <option value>اختر جامعتك أو مدرستك</option>
+                                    <option value="cairo">جامعة القاهرة</option>
+                                    <option value="ain-shams">جامعة عين
+                                        شمس</option>
+                                    <option value="alexandria">جامعة
+                                        الإسكندرية</option>
+                                    <option value="mansoura">جامعة
+                                        المنصورة</option>
+                                    <option value="assuit">جامعة أسيوط</option>
+                                    <option value="tanta">جامعة طنطا</option>
+                                    <option value="zagazig">جامعة
+                                        الزقازيق</option>
+                                    <option value="helwan">جامعة حلوان</option>
+                                    <option value="high-school">مدرسة
+                                        ثانوية</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerPassword">كلمة
+                                    المرور</label>
+                                <input type="password" id="registerPassword"
+                                    placeholder="أدخل كلمة المرور" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">تأكيد كلمة
+                                    المرور</label>
+                                <input type="password" id="confirmPassword"
+                                    placeholder="أعد إدخال كلمة المرور"
+                                    required>
+                            </div>
+                            <button type="submit" class="btn btn-secondary"
+                                style="width: 100%;">إنشاء حساب</button>
+                            <div class="form-footer" style="margin-top: 15px;">
+                                <a href="login.html"
+                                    style="color: var(--nh-primary);">لديك حساب؟
+                                    سجل الدخول</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script>
+// تحقق من وجود مستخدم
+function checkUserExists(email) {
+    const users = JSON.parse(localStorage.getItem('users') || '{"users":[]}');
+    return users.users.some(user => user.email === email);
+}
+
+// تسجيل حساب جديد
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const name = document.getElementById('fullName').value;
+    const university = document.getElementById('university').value;
+    
+    // تحقق من تطابق الباسورد
+    if (password !== confirmPassword) {
+        alert('كلمات المرور غير متطابقة!');
+        return;
+    }
+    
+    // تحقق من وجود الحساب
+    if (checkUserExists(email)) {
+        alert('هذا الحساب موجود بالفعل! يرجى تسجيل الدخول.');
+        return;
+    }
+    
+    // إنشاء حساب جديد
+    const users = JSON.parse(localStorage.getItem('users') || '{"users":[]}');
+    users.users.push({
+        id: Date.now(),
+        name: name,
+        email: email,
+        password: password,
+        university: university,
+        createdAt: new Date().toISOString()
+    });
+    
+    localStorage.setItem('users', JSON.stringify(users));
+    alert('تم إنشاء الحساب بنجاح! يمكنكم الآن تسجيل الدخول.');
+    window.location.href = 'login.html';
+});
+</script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

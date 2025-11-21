@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Next Home Egypt - الملف الشخصي</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="arabic light-mode">
+        <!-- Navigation -->
+        <!-- Navigation -->
+<header>
+    <div class="container header-container">
+        <a href="index.html" class="logo" id="homeLink">
+       <img src="ChatGPT Image 1 أكتوبر 2025، 09_45_25 م.png" alt="nexthome">
+            <div class="logo-text">Next<span>Home</span></div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active" id="navHome">الرئيسية</a></li>
+                <li><a href="properties.html" id="navProperties">الشقق</a></li>
+                <li><a href="about.html" id="navAbout">عن المنصة</a></li>
+                <li><a href="contact.html" id="navContact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+    <button class="language-toggle" id="langToggle">عربي</button>
+    <button class="add-property-btn" id="addPropertyBtn" style="display: none;">
+        <i class="fas fa-plus"></i>
+    </button>
+    <button class="notifications-icon" id="notificationsBtn" style="display: none;">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+    </button>
+    <button class="settings-icon" id="settingsBtn">
+        <i class="fas fa-cog"></i>
+    </button>
+    <div class="profile-icon" id="profileIcon" style="display: none;">
+        <i class="fas fa-user"></i>
+    </div>
+    <button class="btn btn-outline" id="authBtn">تسجيل الدخول</button>
+</div>
+    </div>
+</header>
+        <!-- Profile Page -->
+        <main class="page active-page" id="profilePage">
+            <section class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>الملف الشخصي</h2>
+                        <p>إدارة حسابك وحجوزاتك</p>
+                    </div>
+                    <div class="profile-container">
+                        <div class="profile-info">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="profile-details" id="profileDetails">
+                                <!-- سيتم ملئه بالجافاسكريبت -->
+                            </div>
+                        </div>
+
+                        <div class="profile-sections">
+                            <div class="profile-section">
+                                <h3>حجوزاتي</h3>
+                                <div id="bookingsList">
+                                    <!-- سيتم ملئه بالجافاسكريبت -->
+                                </div>
+                            </div>
+
+                            <div class="profile-section">
+                                <h3>تعديل الحساب</h3>
+                                <form id="editProfileForm">
+                                    <div class="form-group">
+                                        <label for="editName">الاسم
+                                            الكامل</label>
+                                        <input type="text" id="editName"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editEmail">البريد
+                                            الإلكتروني</label>
+                                        <input type="email" id="editEmail"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label
+                                            for="editUniversity">الجامعة</label>
+                                        <select id="editUniversity" required>
+                                            <option value="cairo">جامعة
+                                                القاهرة</option>
+                                            <option value="ain-shams">جامعة عين
+                                                شمس</option>
+                                            <option value="alexandria">جامعة
+                                                الإسكندرية</option>
+                                            <option value="mansoura">جامعة
+                                                المنصورة</option>
+                                            <option value="assuit">جامعة
+                                                أسيوط</option>
+                                            <option value="tanta">جامعة
+                                                طنطا</option>
+                                            <option value="zagazig">جامعة
+                                                الزقازيق</option>
+                                            <option value="helwan">جامعة
+                                                حلوان</option>
+                                            <option value="high-school">مدرسة
+                                                ثانوية</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit"
+                                        class="btn btn-primary">حفظ
+                                        التغييرات</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="js/main.js"></script>
+        <script>
+        // عرض بيانات الملف الشخصي
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const profileDetails = document.getElementById('profileDetails');
+            const editName = document.getElementById('editName');
+            const editEmail = document.getElementById('editEmail');
+            const editUniversity = document.getElementById('editUniversity');
+            
+            if (currentUser) {
+                // عرض البيانات الحالية
+                profileDetails.innerHTML = `
+                    <h3>${currentUser.name}</h3>
+                    <p><strong>البريد الإلكتروني:</strong> ${currentUser.email}</p>
+                    <p><strong>الجامعة:</strong> ${currentUser.university}</p>
+                    <p><strong>تاريخ التسجيل:</strong> ${new Date(currentUser.createdAt).toLocaleDateString('ar-EG')}</p>
+                `;
+                
+                // ملء نموذج التعديل
+                editName.value = currentUser.name;
+                editEmail.value = currentUser.email;
+                editUniversity.value = currentUser.university;
+                
+                // عرض الحجوزات
+                const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+                const bookingsList = document.getElementById('bookingsList');
+                
+                if (bookings.length > 0) {
+                    bookingsList.innerHTML = bookings
+                        .filter(b => b.userId === currentUser.id)
+                        .map(booking => `
+                            <div class="booking-item">
+                                <p><strong>شقة:</strong> ${booking.propertyId}</p>
+                                <p><strong>التاريخ:</strong> ${new Date(booking.checkIn).toLocaleDateString('ar-EG')}</p>
+                                <p><strong>المدة:</strong> ${booking.duration} أشهر</p>
+                                <p><strong>الإجمالي:</strong> ${booking.totalPrice} ج.م</p>
+                            </div>
+                        `).join('');
+                } else {
+                    bookingsList.innerHTML = '<p>لا يوجد حجوزات حتى الآن.</p>';
+                }
+            } else {
+                window.location.href = 'login.html';
+            }
+            
+            // تسجيل الخروج
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    localStorage.removeItem('currentUser');
+                    alert('تم تسجيل الخروج بنجاح!');
+                    window.location.href = 'index.html';
+                });
+            }
+            
+            // تعديل الملف الشخصي
+            const editForm = document.getElementById('editProfileForm');
+            if (editForm) {
+                editForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const users = JSON.parse(localStorage.getItem('users') || '{"users":[]}');
+                    const userIndex = users.users.findIndex(u => u.id === currentUser.id);
+                    
+                    if (userIndex !== -1) {
+                        users.users[userIndex].name = editName.value;
+                        users.users[userIndex].email = editEmail.value;
+                        users.users[userIndex].university = editUniversity.value;
+                        
+                        localStorage.setItem('users', JSON.stringify(users));
+                        localStorage.setItem('currentUser', JSON.stringify(users.users[userIndex]));
+                        
+                        alert('تم تحديث الملف الشخصي بنجاح!');
+                        location.reload();
+                    }
+                });
+            }
+        });
+    </script>
+
+        <style>
+        .profile-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .profile-info {
+            text-align: center;
+        }
+        
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 48px;
+        }
+        
+        .profile-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .profile-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .dark-mode .profile-section {
+            background: var(--card-dark);
+        }
+        
+        .booking-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .dark-mode .booking-item {
+            background: #2a2a2a;
+        }
+    </style>
+    </body>
+</html>
